@@ -1,26 +1,39 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+      <two-tag @emit-two="GetNameFromTwo"></two-tag>
+      <Three-tag :sendToThree="gettwoname"></Three-tag>
+  </div>
+
+  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Two from './components/Two.vue'
+import Three from './components/Three.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+       gettwoname:''
+    }
+  },
+  components:{
+
+    'two-tag':Two,
+    'Three-tag':Three
+
+  },
+  methods: {
+    GetNameFromTwo(xy) {
+      console.log("======",xy)
+     this.gettwoname = xy
+    },
+
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
